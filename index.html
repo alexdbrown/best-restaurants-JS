@@ -11,10 +11,21 @@
   <body>
     <div class="container" ng-controller="RestaurantsCtrl">
       <div class="row">
+        <div ng-show="bestRestaurants.length" class="col-md-12">
+          <h4>Search BEST restaurants</h4>
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <input ng-model="query" type="text" class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-12">
-          <h3>Best Restaurants</h3>
+          <h2 ng-show="bestRestaurants.length && filtered.length">BEST restaurants List</h2>
+          <h2 ng-show="bestRestaurants.length && !filtered.length">No Matches</h2>
           <ul>
-            <li ng-repeat="item in bestRestaurants">
+            <li ng-repeat="item in filtered = (bestRestaurants | filter:query)">
               <span ng-click="editing = true" ng-hide="editing">
                 {{ item.name }} <a ng-click="deleteRestaurant(item)">Delete</a>
               </span>
@@ -29,9 +40,18 @@
         </div>
         <div class="col-md-4">
           <h3>New BEST Restaurant</h3>
-          <form ng-submit="addRestaurant()" class="form-inline" role="form">
+          <form ng-submit="addRestaurant()" role="form">
             <div class="form-group">
-              <input type="text" ng-model="restaurantName" class="form-control" placeholder="Restaurant name">
+              <input type="text" ng-model="restaurantName" class="form-control" placeholder="Restaurant Name">
+            </div>
+            <div class="form-group">
+              <input type="number" ng-model="restaurantPrice" class="form-control" placeholder="$$$" min="1" max="5">
+            </div>
+            <div class="form-group">
+              <input type="number" ng-model="restaurantIntimacy" class="form-control" placeholder="Lust Factor" min="1" max="5">
+            </div>
+            <div class="form-group">
+              <input type="number" ng-model="restaurantSickScale" class="form-control" placeholder="Likelihood of Sickness" min="1" max="5">
             </div>
             <button type="submit" class="btn btn-danger">Add BEST restaurant</button>
           </form>
