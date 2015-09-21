@@ -15,7 +15,7 @@
           <h3>Best Restaurants</h3>
           <ul>
             <li ng-repeat="item in bestRestaurants">
-              {{ item.name }}
+              {{ item.name }} <a ng-click="deleteRestaurant(item)">Delete</a>
             </li>
           </ul>
         </div>
