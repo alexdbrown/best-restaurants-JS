@@ -17,12 +17,14 @@
             <div class="form-group">
               <input ng-model="query" type="text" class="form-control" placeholder="Search">
             </div>
+
           </form>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
           <h2 ng-show="bestRestaurants.length && filtered.length">BEST restaurants List</h2>
+
           <h2 ng-show="bestRestaurants.length && !filtered.length">No Matches</h2>
           <ul>
             <li ng-repeat="item in filtered = (bestRestaurants | filter:query)">
