@@ -27,7 +27,7 @@
           <ul>
             <li ng-repeat="item in filtered = (bestRestaurants | filter:query)">
               <span ng-click="editing = true" ng-hide="editing">
-                <strong>{{ item.name }} </strong><a ng-click="deleteRestaurant(item)">Delete</a>
+                <h4><strong>{{ item.name }} </strong><a ng-click="deleteRestaurant(item)">Delete</a></h4>
               </span>
               <span class="form-group" ng-show="editing" ng-submit="editing = false">
                 <form class="form-line" role="form">
@@ -37,9 +37,9 @@
               </span>
               <ul>
                 <li>Description: {{ item.description }}</li>
-                <li>Price-range: {{ item.price }}/5</li>
-                <li>Intimacy: <span ng-repeat="i in getNumber(item.intimacy) track by $index"><span class="glyphicon glyphicon-fire"></span></span></li>
-                <li>Sickness: {{ item.sickness }}/5</li>
+                <li>Price-range: <span ng-repeat="i in getNumber(item.price) track by $index"><img class="icon" src="img/money.png"></span></li>
+                <li>Intimacy: <span class="fire" ng-repeat="i in getNumber(item.intimacy) track by $index"><span class="glyphicon glyphicon-fire"></span></span></li>
+                <li>Sickness: <span ng-repeat="i in getNumber(item.sickness) track by $index"><img class="icon" src="img/death.png"></span></li>
               </ul>
             </li>
           </ul>
@@ -54,13 +54,13 @@
               <input type="text" ng-model="restaurantDescription" class="form-control" placeholder="Describe it.">
             </div>
             <div class="form-group">
-              <input type="number" ng-model="restaurantPrice" class="form-control" placeholder="$$$" min="1" max="5">
+              <input type="number" ng-model="restaurantPrice" class="form-control" placeholder="$$$ (1-5)" min="1" max="5">
             </div>
             <div class="form-group">
-              <input type="number" ng-model="restaurantIntimacy" class="form-control" placeholder="Intimacy" min="1" max="5">
+              <input type="number" ng-model="restaurantIntimacy" class="form-control" placeholder="Intimacy (1-5)" min="1" max="5">
             </div>
             <div class="form-group">
-              <input type="number" ng-model="restaurantSickScale" class="form-control" placeholder="Likelihood of Sickness" min="1" max="5">
+              <input type="number" ng-model="restaurantSickScale" class="form-control" placeholder="Likelihood of Sickness (1-5)" min="1" max="5">
             </div>
             <button type="submit" class="btn btn-danger">Add BEST restaurant</button>
           </form>
